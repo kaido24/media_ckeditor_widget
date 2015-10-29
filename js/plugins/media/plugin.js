@@ -7,7 +7,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
     icons: 'media',
     requires: 'button,widget',
 
-    // Wrap Drupal plugin in a proxy plugin.
     init: function(editor){
       editor.addCommand( 'media',
       {
@@ -41,7 +40,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
               }
             }
             else if (data.node) {
-              // content is supposed to contain the "outerHTML".
               data.content = data.node.parentNode.innerHTML;
             }
           }
@@ -58,7 +56,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
       });
 
       // Ensure the tokens are replaced by placeholders while editing.
-      // Check for widget support.
         editor.widgets.add( 'mediabox',
         {
           button: 'Create a mediabox',
