@@ -61,7 +61,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
         editables: {},
         allowedContent: '*',
         upcast: function(element) {
-          return element.name == 'img' && element.hasClass('media-element');
+          return element.attributes['data-media-element'] && element.hasClass('media-element');
         },
         downcast: function(element) {
           element.attributes.width = null;
