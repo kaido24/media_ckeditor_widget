@@ -1,10 +1,10 @@
 
-Drupal CKEditor Media Widget
+#Drupal CKEditor Media Widget
 This is 80% overwritten version of https://www.drupal.org/project/media_ckeditor
 
 ###Requirements:
 
-https://www.drupal.org/project/media
+https://www.drupal.org/project/media version 2.x
 
 CKEditor 4.4 or bigger
 
