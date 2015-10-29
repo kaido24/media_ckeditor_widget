@@ -1,0 +1,9 @@
+name = Media CKEditor Widget
+description = Provides a bridge between Media and the stand-alone CKEditor module.
+package = Media
+core = 7.x
+
+dependencies[] = ckeditor
+dependencies[] = media_wysiwyg
+
+test_dependencies[] = token
