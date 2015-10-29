@@ -2,15 +2,14 @@
 Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
-( function() {
+(function() {
   var mediaPluginDefinition = {
     icons: 'media',
     requires: 'button,widget',
 
-    init: function(editor){
-      editor.addCommand( 'media',
-      {
-        exec: function (editor) {
+    init: function(editor) {
+      editor.addCommand('media', {
+        exec: function(editor) {
           var data = {
             format: 'html',
             node: null,
@@ -21,7 +20,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
             insert: function(markup) {
               var editorElement = CKEDITOR.dom.element.createFromHtml(markup);
               CKEDITOR.instances[editor.name].insertElement(editorElement);
-              CKEDITOR.instances[editor.name].widgets.initOn( editorElement, 'mediabox');
+              CKEDITOR.instances[editor.name].widgets.initOn(editorElement, 'mediabox');
             }
           };
           var selection = editor.getSelection();
@@ -34,49 +33,49 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
             if (selection.getType() == CKEDITOR.SELECTION_TEXT) {
               if (CKEDITOR.env.ie && CKEDITOR.env.version < 10) {
                 data.content = selection.getNative().createRange().text;
-              }
-              else {
+              } else {
                 data.content = selection.getNative().toString();
               }
-            }
-            else if (data.node) {
+            } else if (data.node) {
               data.content = data.node.parentNode.innerHTML;
             }
           }
-          var settings = {global: {}}; // media wysiwyg needs it for some reason.
-          Drupal.wysiwyg.plugins.media.invoke(data, {global: {}}, editor.name);
+          var settings = {
+            global: {}
+          }; // media wysiwyg needs it for some reason.
+          Drupal.wysiwyg.plugins.media.invoke(data, {
+            global: {}
+          }, editor.name);
         }
       });
 
-      editor.ui.addButton( 'Media',
-      {
+      editor.ui.addButton('Media', {
         label: 'Add media',
         command: 'media',
         icon: this.path + 'images/icon.gif'
       });
 
       // Ensure the tokens are replaced by placeholders while editing.
-        editor.widgets.add( 'mediabox',
-        {
-          button: 'Create a mediabox',
-          editables: {},
-          allowedContent: '*',
-          upcast: function(element) {
-           return element.name == 'img' && element.hasClass('media-element');
-         },
-          downcast: function( element ) {
-            element.attributes.width = null;
-            element.attributes.height = null;
-            var token = Drupal.wysiwyg.plugins.media.detach(element.getOuterHtml());
-            text = new CKEDITOR.htmlParser.text(token);
-            return text;
-          }
-        });
+      editor.widgets.add('mediabox', {
+        button: 'Create a mediabox',
+        editables: {},
+        allowedContent: '*',
+        upcast: function(element) {
+          return element.name == 'img' && element.hasClass('media-element');
+        },
+        downcast: function(element) {
+          element.attributes.width = null;
+          element.attributes.height = null;
+          var token = Drupal.wysiwyg.plugins.media.detach(element.getOuterHtml());
+          text = new CKEDITOR.htmlParser.text(token);
+          return text;
+        }
+      });
 
       editor.on('setData', function(e) {
         e.data.dataValue = Drupal.wysiwyg.plugins.media.attach(e.data.dataValue);
       });
     }
   };
-  CKEDITOR.plugins.add( 'media', mediaPluginDefinition);
-} )();
+  CKEDITOR.plugins.add('media', mediaPluginDefinition);
+})();
