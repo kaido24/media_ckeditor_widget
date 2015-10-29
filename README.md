@@ -6,8 +6,8 @@ This is 80% overwritten version of https://www.drupal.org/project/media_ckeditor
 
 https://www.drupal.org/project/media version 2.x
 
-CKEditor 4.4 or bigger
+CKEditor 4.4 or newer
 
-CKEDitor Lineutils plugin
+CKEditor Lineutils plugin
 
 CKEditor Widget plugin
