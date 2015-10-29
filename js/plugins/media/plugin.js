@@ -43,9 +43,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
           var settings = {
             global: {}
           }; // media wysiwyg needs it for some reason.
-          Drupal.wysiwyg.plugins.media.invoke(data, {
-            global: {}
-          }, editor.name);
+          Drupal.wysiwyg.plugins.media.invoke(data, settings, editor.name);
         }
       });
 
