@@ -73,6 +73,21 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
       editor.on('setData', function(e) {
         e.data.dataValue = Drupal.wysiwyg.plugins.media.attach(e.data.dataValue);
       });
+
+      editor.on('doubleclick', function(e) {
+        //console.log(e.data.element.getAttribute('data-fid'));
+        if(e.data.element.hasAttribute('data-media-element')) {
+          var data = {
+            format: 'html',
+            node: e.data.element.$,
+            content: ''
+          };
+          var settings = {
+            global: {}
+          }; // media wysiwyg needs it for some reason.
+          Drupal.wysiwyg.plugins.media.invoke(data, settings, editor.name);
+        }
+      });
     }
   };
   CKEDITOR.plugins.add('media', mediaPluginDefinition);
