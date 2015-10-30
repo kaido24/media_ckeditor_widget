@@ -8,20 +8,21 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
     requires: 'button,widget',
 
     init: function(editor) {
+        // Make an intances object so media wysiwyg can use it.
+      Drupal.wysiwyg.instances[editor.name] = {
+        insert: function(markup) {
+          var editorElement = CKEDITOR.dom.element.createFromHtml(markup);
+          CKEDITOR.instances[editor.name].insertElement(editorElement);
+          CKEDITOR.instances[editor.name].widgets.initOn(editorElement, 'mediabox');
+        }
+      };
+      // Add Editor command.
       editor.addCommand('media', {
         exec: function(editor) {
           var data = {
             format: 'html',
             node: null,
             content: ''
-          };
-          // Make an intances object so media wysiwyg can use it.
-          Drupal.wysiwyg.instances[editor.name] = {
-            insert: function(markup) {
-              var editorElement = CKEDITOR.dom.element.createFromHtml(markup);
-              CKEDITOR.instances[editor.name].insertElement(editorElement);
-              CKEDITOR.instances[editor.name].widgets.initOn(editorElement, 'mediabox');
-            }
           };
           var selection = editor.getSelection();
 
@@ -46,14 +47,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
           Drupal.wysiwyg.plugins.media.invoke(data, settings, editor.name);
         }
       });
-
+      // Add UI button
       editor.ui.addButton('Media', {
         label: 'Add media',
         command: 'media',
         icon: this.path + 'images/icon.gif'
       });
 
-      // Ensure the tokens are replaced by placeholders while editing.
+      // Create widget
       editor.widgets.add('mediabox', {
         button: 'Create a mediabox',
         editables: {},
@@ -61,6 +62,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
         upcast: function(element) {
           return element.attributes['data-media-element'] && element.hasClass('media-element');
         },
+        // Create token value.
         downcast: function(element) {
           element.attributes.width = null;
           element.attributes.height = null;
@@ -69,13 +71,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
           return text;
         }
       });
-
+      // prepare data for upcast.
       editor.on('setData', function(e) {
         e.data.dataValue = Drupal.wysiwyg.plugins.media.attach(e.data.dataValue);
       });
-
+      // On doubleclick select media and edit.
       editor.on('doubleclick', function(e) {
-        //console.log(e.data.element.getAttribute('data-fid'));
         if(e.data.element.hasAttribute('data-media-element')) {
           var data = {
             format: 'html',
@@ -90,5 +91,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
       });
     }
   };
+
   CKEDITOR.plugins.add('media', mediaPluginDefinition);
 })();
