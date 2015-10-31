@@ -18,6 +18,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
       };
       // Add Editor command.
       editor.addCommand('media', {
+        // Pattern any class (*), any style {*} and any attribute [*]
+        allowedContent: 'img(*)[*]',
         exec: function(editor) {
           var data = {
             format: 'html',

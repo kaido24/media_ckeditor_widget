@@ -20,6 +20,7 @@ function media_ckeditor_widget_ckeditor_plugin_alter(&$plugins) {
         'label' => 'Add media',
       ),
     ),
-    'default' => 'f',
+    'default' => 't',
   );
 }
+
