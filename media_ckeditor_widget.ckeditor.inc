@@ -16,7 +16,7 @@ function media_ckeditor_widget_ckeditor_plugin_alter(&$plugins) {
     'path' => '%base_path%' . drupal_get_path('module', 'media_ckeditor_widget') . '/js/plugins/media/',
     'buttons' => array(
       'Media' => array(
-        'icon' => 'images/icon.gif',
+        'icon' => 'images/icon.png',
         'label' => 'Add media',
       ),
     ),

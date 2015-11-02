@@ -53,7 +53,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
       editor.ui.addButton('Media', {
         label: 'Add media',
         command: 'media',
-        icon: this.path + 'images/icon.gif'
+        icon: this.path + 'images/icon.png'
       });
 
       // Create widget
