@@ -26,4 +26,4 @@ admin/structure/file-types/manage/document/file-display/wysiwyg
 
 admin/config/media/wysiwyg-view-mode
 
-At CKEditor profile choose  Plugin for embedding files using Media CKEditor Widget
+At CKEditor profile choose  #Plugin for embedding files using Media CKEditor Widget#
