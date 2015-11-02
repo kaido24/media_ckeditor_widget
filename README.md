@@ -12,12 +12,16 @@ CKEditor Lineutils plugin
 
 CKEditor Widget plugin
 
-File entity Display must be configured to show image at WYSIWYG view mode without any links.
+##File entity Display must be configured to show image at WYSIWYG view mode without any links.
+
 admin/structure/file-types/manage/image/file-display/wysiwyg
+
 admin/structure/file-types/manage/video/file-display/wysiwyg
+
 admin/structure/file-types/manage/audio/file-display/wysiwyg
+
 admin/structure/file-types/manage/document/file-display/wysiwyg
 
-Make sure that WYSIWYG view mode is in use inside a CKEditor.
+##Make sure that WYSIWYG view mode is in use inside a CKEditor.
 
 admin/config/media/wysiwyg-view-mode
