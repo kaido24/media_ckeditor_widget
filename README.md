@@ -12,4 +12,4 @@ CKEditor Lineutils plugin
 
 CKEditor Widget plugin
 
-File entity Display must be configured to show image at WYSIWYG without any links. It expects quite the same as preview view mode.
+File entity Display must be configured to show image at WYSIWYG view mode without any links.
