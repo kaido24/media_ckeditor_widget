@@ -25,3 +25,5 @@ admin/structure/file-types/manage/document/file-display/wysiwyg
 ###Make sure that WYSIWYG view mode is in use inside a CKEditor.
 
 admin/config/media/wysiwyg-view-mode
+
+At CKEditor profile choose  Plugin for embedding files using Media CKEditor Widget
